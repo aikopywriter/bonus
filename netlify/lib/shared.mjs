@@ -96,9 +96,15 @@ export async function gemini({ system, contents, json: wantJson = false, schema,
     e.status = 429;
     throw e;
   }
-  const e = new Error('The AI could not answer right now. Please try again in a moment.');
+  const detail = String(lastErr?.message || '').slice(0, 300);
+  const e = new Error(
+    /api key not valid|API_KEY_INVALID/i.test(detail)
+      ? 'The Gemini API key is not valid. Copy it again from Google AI Studio and update GEMINI_API_KEY on Netlify.'
+      : /location is not supported|not available in your country|FAILED_PRECONDITION/i.test(detail)
+      ? 'Gemini’s free plan is not available for this request location. Enable billing on the Google Cloud project, or contact support.'
+      : `The AI could not answer right now. (Details: ${detail || 'no response'})`
+  );
   e.status = 502;
-  e.detail = lastErr?.message;
   throw e;
 }
 

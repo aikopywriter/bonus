@@ -139,6 +139,9 @@ export default function AdDoctor() {
                           <BookOpen size={14} /> Answer from the Billdaa guide (AI is unavailable right now)
                         </div>
                       )}
+                      {m.source === 'guide' && m.note && (
+                        <div className="mb-2 rounded-lg bg-white px-2.5 py-1.5 text-[12px] text-ink-mute ring-1 ring-line">Reason: {m.note}</div>
+                      )}
                       <div className="prose-bot" dangerouslySetInnerHTML={{ __html: mdToHtml(m.content) }} />
                     </div>
                   </div>
