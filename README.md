@@ -19,17 +19,12 @@ Students' saved data (business profile, receipts, guide progress) stays in their
 
 ## Deploy to Netlify (one time, ~10 minutes)
 
-### 1. Put the code on GitHub
-1. On GitHub, create a new **private** repository, e.g. `billdaa-toolkit`.
-2. Upload this folder's files to it (GitHub → *Add file → Upload files*, or with git):
-   ```bash
-   git remote add origin https://github.com/YOUR-USERNAME/billdaa-toolkit.git
-   git push -u origin main
-   ```
+### 1. The code on GitHub
+The code lives in the `aikopywriter/bonus` repository. Any change pushed to `main` redeploys the site automatically once Netlify is connected.
 
 ### 2. Connect it to Netlify
 1. Log in to Netlify → **Add new site → Import an existing project → GitHub**.
-2. Pick the `billdaa-toolkit` repository.
+2. Pick the `bonus` repository.
 3. Build settings are read from `netlify.toml` automatically. Click **Deploy**.
 
 ### 3. Add your secret settings
